@@ -13,11 +13,11 @@ const locationTemplate = document.querySelector('#location-template').innerHTML;
 const sidebarTemplate = document.querySelector('#sidebar-template').innerHTML;
 
 //Options
-//const { room } = Qs.parse(location.search, { ignoreQueryPrefix: true });
+const { room } = Qs.parse(location.search, { ignoreQueryPrefix: true });
 const username = sessionStorage.getItem('username');
 const token = sessionStorage.getItem('token');
-const room = sessionStorage.getItem('room');
 const email = sessionStorage.getItem('email');
+//console.log('email', email);
 
 
 const autoscroll = () => {
@@ -57,6 +57,7 @@ socket.on('locationMessage', (msg) => {
 socket.on('roomData', (roomData) => {
     const html = Mustache.render(sidebarTemplate, {
         room: roomData.room,
+        email: roomData.email,
         users: roomData.users
     });
     document.querySelector('#sidebar').innerHTML = html;

@@ -1,15 +1,3 @@
-const isLoggedIn = async () => {
-    const token = sessionStorage.getItem('token');
-    //console.log('token', token);
-    if (!token) return false;
-    return token;
-};
-
-const autoRedirect = async () => {
-    const validLogin = await isLoggedIn();
-    //console.log('Valid', validLogin);
-    if (!validLogin && location.pathname !== '/') location.href = ('/');
-    //if (validLogin && location.pathname === '/') location.href=('/chat');
-};
-
-autoRedirect();
+if (!sessionStorage.getItem('token')) {
+    location.href = ('/login');
+}

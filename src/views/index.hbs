@@ -3,11 +3,7 @@
 <div class="centered-form">
     <div class="centered-form__box">
         <h1>Join</h1>
-        <form action="login">
-            <label id="label1">Login</label>
-            <input id="username" type="text" name="username" placeholder="email" required>
-            <label id="label2">Password</label>
-            <input id="password" type="password" name="password" required>
+        <form action="chat">
             <label>Room</label>
             <div id="roomSelector" class=""></div>
             <button>Join</button>
@@ -24,10 +20,9 @@
         </datalist>
 </script>
 
-<script src="/js/auth.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.0.1/mustache.min.js"
         integrity="sha512-6AXIWogbKpsHvoZJrJtHpIYES4wP8czSj0zk7ZfwOYS8GWYFNSykwdfapt7yQc4ikZytemBu+QyVObzBHJMwYg=="
         crossorigin="anonymous"></script>
 <script src="/socket.io/socket.io.js"></script>
+<script src="/js/auth.js"></script>
 <script src="/js/index.js"></script>

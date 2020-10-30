@@ -1,15 +1,8 @@
-const {username, password, room} = Qs.parse(location.search, {ignoreQueryPrefix: true});
+const {email, password} = Qs.parse(location.search, {ignoreQueryPrefix: true});
 
-console.log(username, password, room);
+//console.log(email, password);
 
-//before we do anything else, make sure the user is valid and logged in.
 const login = async () => {
-
-    //user already logged in
-    if (!username && sessionStorage.getItem('token')) {
-        sessionStorage.setItem('room', room);
-        return location.href = '/chat';
-    }
     const response = await fetch('/users/login',
         {
             method: 'post',
@@ -18,21 +11,21 @@ const login = async () => {
             },
             body:
                 JSON.stringify({
-                    "email": username,
+                    "email": email,
                     "password": password
                 })
         });
     if (response.status === 200) {
+        //user is successfully logged in, so, let's set the sessionvariables
         const body = await response.json();
         //console.log('body', body)
         sessionStorage.setItem('token', body.token);
         sessionStorage.setItem('username', body.user.name);
-        sessionStorage.setItem('room', room)
         sessionStorage.setItem('email', body.user.email);
-        return location.href = '/chat';
+        return location.href = '/';
     } else {
         alert('User name or password is incorrect');
-        return location.href = '/';
+        return location.href = '/login';
     }
 }
 
@@ -46,9 +39,9 @@ const login = async () => {
 //
 // }
 
-
-
-const user = login();
+if (email && password) {
+    login();
+}
 
 
 
