@@ -4,9 +4,7 @@ const router = require('./routes/router');
 const userRouter = require('./routes/user');
 require('./db/mongoose');
 
-
 const app = express();
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -13,12 +13,14 @@ const locationTemplate = document.querySelector('#location-template').innerHTML;
 const sidebarTemplate = document.querySelector('#sidebar-template').innerHTML;
 
 //Options
-//const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix: true });
-const username = localStorage.getItem('username');
-const room = localStorage.getItem('room');
+//const { room } = Qs.parse(location.search, { ignoreQueryPrefix: true });
+const username = sessionStorage.getItem('username');
+const token = sessionStorage.getItem('token');
+const room = sessionStorage.getItem('room');
+const email = sessionStorage.getItem('email');
+
 
 const autoscroll = () => {
-
     const $newMessage = $messages.lastElementChild;
     const newMessageStyles = getComputedStyle($newMessage);
     const newMessageMargin = parseInt(newMessageStyles.marginBottom);
@@ -98,9 +100,13 @@ $sendLocationButton.addEventListener('click', (e) => {
     });
 });
 
-socket.emit('join', { username, room }, (error) => {
+socket.emit('join', { email, username, room, token }, (error) => {
+    //console.log('joining')
     if (error) {
-        alert(error);
+        if (error.status===2) {
+            sessionStorage.removeItem('token');
+        }
+        alert(error.msg);
         location.href = '/';
     }
 });

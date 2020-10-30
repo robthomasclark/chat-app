@@ -5,7 +5,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 
-
 const passwordSchema = new passwordValidator();
 passwordSchema.is().min(7).is().max(100).has().uppercase().has()
     .lowercase().has().not().spaces().is().not().oneOf(['password']);
@@ -68,7 +67,7 @@ userSchema.methods.toJSON = function () {
     delete userObject.password;
     delete userObject.tokens;
     if (userObject.avatar) {
-        userObject.avatar = 'uploaded and set'
+        userObject.avatar = 'uploaded and set';
     }
     return userObject;
 };
