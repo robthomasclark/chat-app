@@ -1,4 +1,5 @@
 const users = [];
+const rooms = [];
 
 const addUser = ({id, username, room}) => {
     //clean the data
@@ -20,6 +21,11 @@ const addUser = ({id, username, room}) => {
 
     const user = {id, username, room};
     users.push(user);
+    //if the room isn't in the room list, add it
+    roomInList = rooms.find((r) => r.name === room);
+     if (!roomInList) {
+        rooms.push({name: room});
+    }
     return user;
 };
 
@@ -38,9 +44,14 @@ const getUsersInRoom = (room) => {
     return users.filter((user) => user.room === room);
 }
 
+const getRoomList = () => {
+    return rooms;
+}
+
 module.exports = {
     addUser,
     removeUser,
     getUser,
-    getUsersInRoom
+    getUsersInRoom,
+    getRoomList
 }

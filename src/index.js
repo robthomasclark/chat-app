@@ -3,7 +3,7 @@ const http = require('http');
 const socketio = require('socket.io');
 const Filter = require('bad-words');
 const {generateMessage} = require('./utils/messages');
-const {addUser, removeUser, getUser, getUsersInRoom} = require('./utils/users');
+const {addUser, removeUser, getUser, getUsersInRoom, getRoomList} = require('./utils/users');
 
 
 const port = process.env.PORT;
@@ -16,8 +16,15 @@ const io = socketio(server);
 io.on('connection', (socket) => {
     //console.log('New Websocket connection!');
 
+    socket.on('getroomlist', () => {
+        socket.join();
+        socket.emit('roomlist', getRoomList());
+    })
+
 
     socket.on('join', ({username, room}, callback) => {
+
+        //validate user
 
         const user = addUser({ id: socket.id, username, room });
         if (user.error) {

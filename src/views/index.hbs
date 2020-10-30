@@ -3,12 +3,31 @@
 <div class="centered-form">
     <div class="centered-form__box">
         <h1>Join</h1>
-        <form action="chat">
-            <label>Display Name</label>
-            <input type="text" name="username" placeholder="Display name" required>
+        <form action="login">
+            <label>Login</label>
+            <input type="text" name="username" placeholder="email" required>
+            <label>Password</label>
+            <input type="password" name="password" required>
             <label>Room</label>
-            <input type="text" name="room" placeholder="room" required>
+            <div id="roomSelector" class=""></div>
             <button>Join</button>
         </form>
     </div>
 </div>
+
+<script id="roomlist-template" type="text/html">
+    <input type="text" name="room" placeholder="room" list="roomName" required>
+        <datalist id="roomName">
+            \{{#rooms}}
+            <option value=\{{name}}></option>
+            \{{/rooms}}
+        </datalist>
+</script>
+
+<script src="/js/auth.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.0.1/mustache.min.js"
+        integrity="sha512-6AXIWogbKpsHvoZJrJtHpIYES4wP8czSj0zk7ZfwOYS8GWYFNSykwdfapt7yQc4ikZytemBu+QyVObzBHJMwYg=="
+        crossorigin="anonymous"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/index.js"></script>
