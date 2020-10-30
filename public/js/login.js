@@ -22,6 +22,7 @@ const login = async () => {
         sessionStorage.setItem('token', body.token);
         sessionStorage.setItem('username', body.user.name);
         sessionStorage.setItem('email', body.user.email);
+        sessionStorage.setItem('loggedInUser', body.user.email)
         return location.href = '/';
     } else {
         alert('User name or password is incorrect');

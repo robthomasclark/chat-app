@@ -57,7 +57,7 @@ socket.on('locationMessage', (msg) => {
 socket.on('roomData', (roomData) => {
     const html = Mustache.render(sidebarTemplate, {
         room: roomData.room,
-        email: roomData.email,
+        email: sessionStorage.getItem('loggedInUser'),
         users: roomData.users
     });
     document.querySelector('#sidebar').innerHTML = html;
