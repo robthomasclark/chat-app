@@ -11,10 +11,15 @@ router.get('/login', (req, res, next) => {
     res.render('login', {title: 'Chat App'});
 });
 
+router.get('/signup', (req, res, next) => {
+    res.render('signup', {title: 'Chat App'})
+})
+
 /* GET chat page. */
 router.get('/chat', (req, res, next) => {
     res.render('chat', {title: 'Chat App'});
 });
+
 
 router.get('*', (req, res, next) => {
     res.render('error', {

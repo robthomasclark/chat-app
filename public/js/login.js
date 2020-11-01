@@ -1,8 +1,4 @@
-const {email, password} = Qs.parse(location.search, {ignoreQueryPrefix: true});
-
-//console.log(email, password);
-
-const login = async () => {
+const login = async (email, password) => {
     const response = await fetch('/users/login',
         {
             method: 'post',
@@ -18,32 +14,41 @@ const login = async () => {
     if (response.status === 200) {
         //user is successfully logged in, so, let's set the sessionvariables
         const body = await response.json();
-        //console.log('body', body)
         sessionStorage.setItem('token', body.token);
         sessionStorage.setItem('username', body.user.name);
         sessionStorage.setItem('email', body.user.email);
         sessionStorage.setItem('loggedInUser', body.user.email)
         return location.href = '/';
     } else {
+
+        //check the response body/code to see if a more meaninful response can be given
         alert('User name or password is incorrect');
-        return location.href = '/login';
+        $loginButton.removeAttribute('disabled')
     }
 }
 
-// const logout = async () => {
-//     const response = await fetch('/users/logout',
-//         {
-//             method: 'post',
-//             headers: {
-//                 'Content-Type': 'application/json'}
-//         });
-//
-// }
+const $loginButton = document.querySelector('#loginbutton');
+const $password = document.querySelector('#password');
+const $email = document.querySelector('#email');
 
-if (email && password) {
-    login();
+const formsFilled = () => {
+    if ($email.value && $password.value) {
+        $loginButton.removeAttribute('disabled')
+        $loginButton.focus();
+    }
 }
 
+const startupLogin = (e) => {
+    e.preventDefault();
+    $loginButton.setAttribute('disabled', 'disabled');
+    login($email.value, $password.value);
+}
 
+/* event listeners */
+$loginButton.addEventListener('click', startupLogin);
+$password.addEventListener('change', formsFilled);
+$email.addEventListener('change', formsFilled);
 
+//disable login
+$loginButton.setAttribute('disabled', 'disabled');
 
