@@ -30,11 +30,14 @@ const login = async (email, password) => {
 const $loginButton = document.querySelector('#loginbutton');
 const $password = document.querySelector('#password');
 const $email = document.querySelector('#email');
+const $roomList = document.querySelector('#room-list');
 
 const formsFilled = () => {
     if ($email.value && $password.value) {
         $loginButton.removeAttribute('disabled')
         $loginButton.focus();
+    } else {
+        $loginButton.setAttribute('disabled', 'disabled');
     }
 }
 
@@ -51,4 +54,5 @@ $email.addEventListener('change', formsFilled);
 
 //disable login
 $loginButton.setAttribute('disabled', 'disabled');
+$roomList.style.visibility = 'hidden';
 

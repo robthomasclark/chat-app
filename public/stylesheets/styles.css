@@ -1,8 +1,8 @@
 html, body {
     height: 100%;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 1.4;
-    color: #333333;
+    color: #FFFFFF;
     font-family: Helvetica, Arial, sans-serif;
     margin: 0;
 }
@@ -10,16 +10,43 @@ html, body {
 
 
 header {
-    height: 20px;
-    background: gray;
+    height: 100px;
+    background: #383a46;
 }
+
+header ul {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+header li {
+  display: inline;
+  float: left
+}
+
+header li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding-left: 24px;
+  padding-right: 24px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+header li a:hover {
+  background-color: #8c91ad;
+}
+
 .wrap {
     min-height: 100%;
     position: relative;
     overflow: hidden;
 }
+
 .main {
-    background: darkgray;
+    background: 202020;
     top: 20px;
     bottom: 20px;
     position:absolute;
@@ -27,7 +54,7 @@ header {
 }
 
 footer {
-    background: gray;
+    background: #383a46;
     height: 20px;
     width: 100%;
     position: absolute;
@@ -42,11 +69,11 @@ h1 {
     display: block;
     font-size: 14px;
     margin-bottom: 8px;
-    color: #777;
+    color: #FFFFFF;
   }
 
 input {
-    border: 1px solid #eeeeee;
+    border: 1px solid #FFFFFF;
     padding: 12px;
     outline: none;
   }
@@ -54,24 +81,24 @@ input {
 button {
     cursor: pointer;
     padding: 12px;
-    background: #7C5CBF;
+    background: #6e7288;
     border: none;
-    color: white;
+    color: #FFFFFF;
     font-size: 14px;
     transition: background .3s ease;
   }
   
   button:hover {
-    background: #6b47b8;
+    background: #8c91ad;
   }
   
   button:disabled {
     cursor: default;
-    background: #7c5cbf94;
+    background: #d9dbe6;
   }
 
   .centered-form {
-    background: #333744;
+    background: #ebecf5;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -81,7 +108,7 @@ button {
   
   .centered-form__box {
     box-shadow: 0px 0px 17px 1px #1D1F26;
-    background: #F7F7FA;
+    background: #383a46;
     padding: 24px;
     width: 250px;
   }
@@ -101,12 +128,14 @@ button {
   
   .chat__sidebar {
     height: 100vh;
-    color: white;
-    background: #333744;
+    color: #FFFFFF;
+    background: #5f6179;
     width: 225px;
     overflow-y: scroll
   }
   .chat__main {
+    color: #FFFFFF;
+    background: #ebecf5;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -120,10 +149,12 @@ button {
   }
 
   .message {
+    color: #777;
     margin-bottom: 16px;
   }
   
   .message__name {
+    color: #777;
     font-weight: 600;
     font-size: 14px;
     margin-right: 8px;
@@ -135,7 +166,7 @@ button {
   }
   
   .message a {
-    color: #0070CC;
+    color: #777;
   }
 
 .compose {
@@ -152,11 +183,12 @@ button {
   }
   
   .compose input {
-    border: 1px solid #eeeeee;
+    border: 1px solid #FFFFFF;
     width: 100%;
     padding: 12px;
     margin: 0 16px 0 0;
     flex-grow: 1;
+    color: #777;
   }
   
   .compose button {
@@ -166,7 +198,6 @@ button {
   .user-title {
     font-weight: 400;
     font-size: 12px;
-    background: #2c2f3a;
     padding: 0px 24px 0px 24px;
   }
   
