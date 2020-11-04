@@ -2,6 +2,11 @@ const socket = io();
 
 //templates
 const roomListTemplate = document.querySelector('#roomlist-template').innerHTML;
+const $meHeader = document.querySelector('#me-header');
+
+$meHeader.href = 'logout';
+$meHeader.text = 'Logout';
+
 
 socket.on('roomlist', (roomList) => {
     const html = Mustache.render(roomListTemplate, {

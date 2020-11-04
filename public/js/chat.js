@@ -7,6 +7,7 @@ const $messageFormButton = $messageForm.querySelector('button');
 const $sendLocationButton = document.querySelector('#send-location');
 const $messages = document.querySelector('#messages');
 const $roomList = document.querySelector('#room-list');
+const $meHeader = document.querySelector('#me-header');
 
 //Templates
 const messageTemplate = document.querySelector('#message-template').innerHTML;
@@ -21,6 +22,8 @@ const email = sessionStorage.getItem('email');
 //console.log('email', email);
 
 $roomList.style.visibility = 'visible';
+$meHeader.href = 'logout';
+$meHeader.text = 'Logout';
 
 
 const autoscroll = () => {

@@ -34,6 +34,8 @@ const $password = document.querySelector('#password');
 const $password2 = document.querySelector('#password2');
 const $email = document.querySelector('#email');
 const $username = document.querySelector('#displayname');
+const $roomList = document.querySelector('#room-list');
+const $meHeader = document.querySelector('#me-header');
 
 const passWordMatch = () => {
     const pw1 = $password.value;
@@ -69,3 +71,6 @@ $username.addEventListener('change', passWordMatch);
 $signupButton.addEventListener('click', startupLogin);
 
 $signupButton.setAttribute('disabled', 'disabled');
+$roomList.style.visibility = 'hidden';
+$meHeader.href = 'login';
+$meHeader.text = 'Login';

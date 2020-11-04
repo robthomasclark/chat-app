@@ -6,9 +6,14 @@ router.get('/', (req, res, next) => {
     res.render('index', {title: 'Chat App'});
 });
 
-/* GET home page. */
+/* GET login page. */
 router.get('/login', (req, res, next) => {
     res.render('login', {title: 'Chat App'});
+});
+
+/* GET logout page. */
+router.get('/logout', (req, res, next) => {
+    res.render('logout', {title: 'Chat App'});
 });
 
 router.get('/signup', (req, res, next) => {
